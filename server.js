@@ -1,14 +1,16 @@
 const express = require('express');
-const http = require('http');
+const http = require("serverless-http");
 const socketIo = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
+
+const netlifyLambda = require("netlify-lambda");
+app.listen(netlifyLambda.handler);
 
 const players = {};
 const ball = {
@@ -21,20 +23,16 @@ const canvas = {
     height: 400,
     width: 600,
 }
-
 const paddleWidth = 10;
 const paddleHeight = 60;
 const ballSize = 10;
-
 let myPaddleY = 175;
 let opponentPaddleY = 175;
 let myScore = 0;
 let opponentScore = 0;
-
 let current = true;
 let conexionesTotales = 0;
 let desconexionesTotales = 0;
-
 
 io.on('connection', (socket) => {
     console.log(`Usuario conectado: ${socket.id}`);
