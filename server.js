@@ -5,12 +5,14 @@ const socketIo = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-const PORT = process.env.PORT || 3000;
 
-app.use(express.static('public'));
+app.use(http.middleware);                 // Add serverless-http middleware
+exports.handler = netlifyLambda.handler;  // Export Netlify Lambda handler
 
-const netlifyLambda = require("netlify-lambda");
-app.listen(netlifyLambda.handler);
+//const PORT = process.env.PORT || 3000;
+//app.use(express.static('public'));
+//const netlifyLambda = require("netlify-lambda");
+//app.listen(netlifyLambda.handler);
 
 const players = {};
 const ball = {
@@ -82,7 +84,7 @@ io.on('connection', (socket) => {
 });
 
 server.listen(PORT, () => {
-    console.log(`Servidor en ejecución en http://localhost:${PORT}`);
+    console.log(`Servidor en ejecución`);
 });
 
 function generaPelota() {
