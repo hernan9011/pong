@@ -1,6 +1,6 @@
+const socketIo = require('socket.io');
 const express = require('express');
 const http = require("serverless-http");
-const socketIo = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
