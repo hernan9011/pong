@@ -11,7 +11,7 @@ exports.handler = netlifyLambda.handler;  // Export Netlify Lambda handler
 
 
 const PlayerServer = {};
-const ball = {
+const ballServer = {
     x: 300,
     y: 200,
     speedX: 5,
@@ -21,11 +21,11 @@ const canvas = {
     height: 400,
     width: 600,
 }
-const paddleWidth = 10;
-const paddleHeight = 60;
-const ballSize = 10;
-let myPaddleY = 175;
-let opponentPaddleY = 175;
+const paddleWidthServer = 10;
+const paddleHeightServer = 60;
+const ballSizeServer = 10;
+let myPaddleYServer = 175;
+let opponentPaddleYServer = 175;
 let myScore = 0;
 let opponentScore = 0;
 let current = true;
@@ -58,12 +58,12 @@ io.on('connection', (socket) => {
     });
 
     socket.on('moverJugador', (data) => {
-        myPaddleY = data.y;
+        myPaddleYServer = data.y;
         io.emit('actualizarJugador', data);
     });
 
     socket.on('moverOponente', (data) => {
-        opponentPaddleY = data.y;
+        opponentPaddleYServer = data.y;
         io.emit('actualizarOponente', data);
     });
 
@@ -85,61 +85,61 @@ server.listen(PORT, () => {
 
 function generaPelota() {
     // Actualiza la posición de la pelota
-    ball.x += ball.speedX;
-    ball.y += ball.speedY;
+    ballServer.x += ballServer.speedX;
+    ballServer.y += ballServer.speedY;
     io.emit('actualizarPelota', ball);
 
     // Comprueba si la pelota golpea la pared superior
-    if (ball.y <= 0) {
-        ball.y = 0;
-        ball.speedY = -ball.speedY;
+    if (ballServer.y <= 0) {
+        ballServer.y = 0;
+        ballServer.speedY = -ball.speedY;
         io.emit('actualizarPelota', ball);
     }
 
     // Comprueba si la pelota golpea la pared inferior
-    if (ball.y >= canvas.height) {
-        ball.y = canvas.height;
-        ball.speedY = -ball.speedY;
+    if (ballServer.y >= canvas.height) {
+        ballServer.y = canvas.height;
+        ballServer.speedY = -ballServer.speedY;
         io.emit('actualizarPelota', ball);
     }
 
     // Comprueba si la pelota golpea la paleta del jugador
-    if (ball.x <= paddleWidth + 10 && ball.y >= myPaddleY - ballSize && ball.y <= myPaddleY + paddleHeight / 2) {
-        ball.x = 0;
-        ball.speedX = 5;
-        io.emit('actualizarPelota', ball);
+    if (ballServer.x <= paddleWidthServer + 10 && ballServer.y >= myPaddleYServer - ballSizeServer && ballServer.y <= myPaddleYServer + paddleHeightServer / 2) {
+        ballServer.x = 0;
+        ballServer.speedX = 5;
+        io.emit('actualizarPelota', ballServer);
     }
 
     // Comprueba si la pelota golpea la paleta del oponente
-    if (ball.x >= canvas.width - paddleWidth - 10 && ball.y >= opponentPaddleY - ballSize && ball.y <= opponentPaddleY + paddleHeight / 2) {
-        ball.x = canvas.width;
-        ball.speedX = -5;
-        io.emit('actualizarPelota', ball);
+    if (ballServer.x >= canvas.width - paddleWidthServer - 10 && ballServer.y >= opponentPaddleYServer - ballSizeServer && ballServer.y <= opponentPaddleYServer + paddleHeightServer / 2) {
+        ballServer.x = canvas.width;
+        ballServer.speedX = -5;
+        io.emit('actualizarPelota', ballServer);
     }
 
     // Comprueba si la pelota golpea el lado derecho
-    if (ball.x > canvas.width + 50) {
+    if (ballServer.x > canvas.width + 50) {
         // Actualiza el puntaje del oponente
         opponentScore++;
         // Reinicia la pelota
-        ball.x = 300;
-        ball.y = 200;
-        ball.speedX = 5;
-        ball.speedY = 5;
-        io.emit('actualizarPelota', ball);
+        ballServer.x = 300;
+        ballServer.y = 200;
+        ballServer.speedX = 5;
+        ballServer.speedY = 5;
+        io.emit('actualizarPelota', ballServer);
         io.emit('actOpponentScore', opponentScore);
     }
 
     // Comprueba si la pelota golpea el lado izquierdo
-    if (ball.x < -10) {
+    if (ballServer.x < -10) {
         // Actualiza el puntaje del jugador
         myScore++;
         // Reinicia la pelota
-        ball.x = 300;
-        ball.y = 200;
-        ball.speedX = -5;
-        ball.speedY = 5;
-        io.emit('actualizarPelota', ball);
+        ballServer.x = 300;
+        ballServer.y = 200;
+        ballServer.speedX = -5;
+        ballServer.speedY = 5;
+        io.emit('actualizarPelota', ballServer);
         io.emit('actMyScore', myScore);
     }
 
@@ -149,12 +149,12 @@ function generaPelota() {
 }
 
 function reset() {
-    ball.x = 300;
-    ball.y = 200;
-    ball.speedX = 5;
-    ball.speedY = 5;
-    myPaddleY = 175;
-    opponentPaddleY = 175;
+    ballServer.x = 300;
+    ballServer.y = 200;
+    ballServer.speedX = 5;
+    ballServer.speedY = 5;
+    myPaddleYServer = 175;
+    opponentPaddleYServer = 175;
     myScore = 0;
     opponentScore = 0;
 }
