@@ -1,4 +1,3 @@
-console.log("aaaaaaaa");
 
 const express = require('express');
 const http = require("serverless-http");
