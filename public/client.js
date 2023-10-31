@@ -1,7 +1,7 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-const socket = require("socket.io-client")("https://example.com", {
+const socket = require("socket.io-client")("https://pong2023.netlify.app/", {
   rejectUnauthorized: false ,// WARN: please do not do this in production
   ca: fs.readFileSync('./cert.pem')
 });

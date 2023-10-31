@@ -9,12 +9,8 @@ const io = socketIo(server);
 app.use(http.middleware);                 // Add serverless-http middleware
 exports.handler = netlifyLambda.handler;  // Export Netlify Lambda handler
 
-//const PORT = process.env.PORT || 3000;
-//app.use(express.static('public'));
-//const netlifyLambda = require("netlify-lambda");
-//app.listen(netlifyLambda.handler);
 
-const players = {};
+const PlayerServer = {};
 const ball = {
     x: 300,
     y: 200,
@@ -40,7 +36,7 @@ io.on('connection', (socket) => {
     console.log(`Usuario conectado: ${socket.id}`);
 
     // Agregar nuevo jugador
-    players[socket.id] = {
+    PlayerServer[socket.id] = {
         flag: current,
         x: 0,
         y: 175, score: 0,
@@ -52,7 +48,7 @@ io.on('connection', (socket) => {
 
     socket.on('mensaje', (data) => {
         console.log('Mensaje del cliente:', data);
-        io.emit('evento', players);
+        io.emit('evento', PlayerServer);
         generaPelota();
     });
 
@@ -73,8 +69,8 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log(`Usuario desconectado: ${socket.id}`);
-        current = players[socket.id].flag
-        delete players[socket.id];
+        current = PlayerServer[socket.id].flag
+        delete PlayerServer[socket.id];
         reset();
         conexionesTotales--;
         desconexionesTotales++;
