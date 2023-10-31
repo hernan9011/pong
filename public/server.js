@@ -1,5 +1,5 @@
-import socketIo from 'socket.io';
-import express from 'express';
+import socketIo from 'node_modules\socket.io\client-dist\socket.io.js';
+import express from 'node_modules\express\lib\express.js';
 import { createServer, middleware } from "serverless-http";
 
 const app = express();
