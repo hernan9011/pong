@@ -27,7 +27,7 @@ const ballSizeServer = 10;
 let myPaddleYServer = 175;
 let opponentPaddleYServer = 175;
 let myScoreServer = 0;
-let opponentScore = 0;
+let opponentScoreServer = 0;
 let current = true;
 let conexionesTotales = 0;
 let desconexionesTotales = 0;
@@ -120,14 +120,14 @@ function generaPelota() {
     // Comprueba si la pelota golpea el lado derecho
     if (ballServer.x > canvasServer.width + 50) {
         // Actualiza el puntaje del oponente
-        opponentScore++;
+        opponentScoreServer++;
         // Reinicia la pelota
         ballServer.x = 300;
         ballServer.y = 200;
         ballServer.speedX = 5;
         ballServer.speedY = 5;
         io.emit('actualizarPelota', ballServer);
-        io.emit('actOpponentScore', opponentScore);
+        io.emit('actOpponentScore', opponentScoreServer);
     }
 
     // Comprueba si la pelota golpea el lado izquierdo
@@ -156,5 +156,5 @@ function reset() {
     myPaddleYServer = 175;
     opponentPaddleYServer = 175;
     myScoreServer = 0;
-    opponentScore = 0;
+    opponentScoreServer = 0;
 }
