@@ -1,11 +1,12 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-const socket = require("socket.io-client")("https://pong2023.netlify.app/", {
+const sockets = require("socket.io-client")("https://pong2023.netlify.app/", {
   rejectUnauthorized: false ,// WARN: please do not do this in production
   ca: fs.readFileSync('./cert.pem')
 });
 
+const socket = io('https://pong2023.netlify.app/');
 const paddleWidth = 10;
 const paddleHeight = 60;
 const ballSize = 10;
