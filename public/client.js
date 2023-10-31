@@ -1,6 +1,9 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
-const socket = io('https://pong2023.netlify.app/');
+
+const socket = require("socket.io-client")("https://example.com", {
+  rejectUnauthorized: false // WARN: please do not do this in production
+});
 
 const paddleWidth = 10;
 const paddleHeight = 60;
