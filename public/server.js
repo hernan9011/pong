@@ -1,13 +1,13 @@
-const socketIo = require('socket.io');
-const express = require('express');
-const http = require("serverless-http");
+import socketIo from 'socket.io';
+import express from 'express';
+import { createServer, middleware } from "serverless-http";
 
 const app = express();
-const server = http.createServer(app);
+const server = createServer(app);
 const io = socketIo(server);
 
-app.use(http.middleware);                 // Add serverless-http middleware
-exports.handler = netlifyLambda.handler;  // Export Netlify Lambda handler
+app.use(middleware);                 // Add serverless-http middleware
+export const handler = netlifyLambda.handler;  // Export Netlify Lambda handler
 
 
 const PlayerServer = {};
