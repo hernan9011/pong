@@ -6,8 +6,8 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
-app.use(http.middleware);                 // Add serverless-http middleware
-exports.handler = netlifyLambda.handler;  // Export Netlify Lambda handler
+//app.use(http.middleware);                 // Add serverless-http middleware
+//exports.handler = netlifyLambda.handler;  // Export Netlify Lambda handler
 
 const PlayerServer = {};
 const ballServer = {
@@ -78,7 +78,7 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(PORT, () => {
+server.listen(3000, () => {
     console.log(`Servidor en ejecución`);
 });
 
