@@ -1,0 +1,16 @@
+[build]
+command = "npm run build"
+functions = "functions"
+
+[functions]
+node_modules = "node_modules"
+
+[dev]
+port = 3000
+
+[functions.https]
+ssl_certificate = "ssl/certificate.pem"
+ssl_key = "ssl/key.pem"
+
+[headers]
+/* = "Access-Control-Allow-Origin: *"
