@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "netlify": "^13.1.10",
+    "netlify-lambda": "^2.0.16",
     "socket.io": "^4.7.2"
   }
 }
