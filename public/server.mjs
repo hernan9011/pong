@@ -1,3 +1,12 @@
+module.exports = {
+    resolve: {
+      modules: [
+        // ...
+        path.resolve(__dirname, 'node_modules'),
+      ],
+    },
+  };
+
 import { Server } from 'socket.io';
 import express from 'express';
 import { createServer } from 'node:http';
