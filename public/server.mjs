@@ -1,4 +1,4 @@
-import { Server } from 'socket.io';
+import { Server } from 'https://cdn.socket.io/node_modules/@socket.io/component-emitter/index.mjs';
 import express from 'express';
 import { createServer } from 'node:http';
 
