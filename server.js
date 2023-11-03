@@ -8,16 +8,19 @@ const io = socketIo(server);
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static('public'));
-
 // Definir una ruta de prueba
 //app.get('/', (req, res) => {
     //res.sendFile(new URL('./index.html', import.meta.url).pathname);
 //});
+// Definir una ruta de prueba
+app.get('/', (req, res) => {
+    res.send('¡Hola Mundo!');
+});
+  
 // Iniciar el servidor
-//app.listen(port, () => {
-  //  console.log(`Servidor escuchando en http://localhost:${port}`);
-//});
+app.listen(port, () => {
+    console.log(`Servidor escuchando en http://localhost:${port}`);
+});
 
 const PlayerServer = {};
 const ballServer = {
