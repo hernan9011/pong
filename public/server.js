@@ -6,6 +6,19 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
+// Definir una ruta de prueba
+app.get('/', (req, res) => {
+    res.send('¡Hola Mundo!');
+});
+
+// Iniciar el servidor
+app.listen(port, () => {
+    console.log(`Servidor escuchando en http://localhost:${port}`);
+});
+
+
+
+
 const PlayerServer = {};
 const ballServer = {
     x: 300,
