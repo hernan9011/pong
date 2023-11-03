@@ -13,6 +13,11 @@ const port = 3000 || process.env.PORT;
 app.get('/', (req, res) => {
     res.send('¡Hola Mundo!');
 });
+
+app.get('/', (req, res) => {
+    res.sendFile(new URL('index.html', import.meta.url).pathname);
+  });
+
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
