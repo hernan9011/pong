@@ -14,9 +14,10 @@ app.get('/', (req, res) => {
     res.send('¡Hola Mundo!');
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(new URL('./index.html', import.meta.url).pathname);
-  });  
+// Obtener la ruta absoluta al archivo index.html
+const indexPath = path.join(__dirname, './index.html');
+// Enviar el archivo index.html
+app.get('/', (req, res) => { res.sendFile(indexPath); });
 
 // Iniciar el servidor
 app.listen(port, () => {
