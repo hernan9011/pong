@@ -2,6 +2,7 @@ const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 const socket = io('http://localhost:3000', { transports: ["websocket"] });
 
+
 const paddleWidth = 10;
 const paddleHeight = 60;
 const ballSize = 10;
