@@ -96,20 +96,20 @@ function generaPelota() {
     // Actualiza la posición de la pelota
     ballServer.x += ballServer.speedX;
     ballServer.y += ballServer.speedY;
-    io.emit('actualizarPelota', ball);
+    io.emit('actualizarPelota', ballServer);
 
     // Comprueba si la pelota golpea la pared superior
     if (ballServer.y <= 0) {
         ballServer.y = 0;
-        ballServer.speedY = -ball.speedY;
-        io.emit('actualizarPelota', ball);
+        ballServer.speedY = -ballServer.speedY;
+        io.emit('actualizarPelota', ballServer);
     }
 
     // Comprueba si la pelota golpea la pared inferior
     if (ballServer.y >= canvasServer.height) {
         ballServer.y = canvasServer.height;
         ballServer.speedY = -ballServer.speedY;
-        io.emit('actualizarPelota', ball);
+        io.emit('actualizarPelota', ballServer);
     }
 
     // Comprueba si la pelota golpea la paleta del jugador
