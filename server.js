@@ -5,14 +5,14 @@ const { Server } = require('socket.io');
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
-const port = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
+app.use(express.static('PONG'));
+
+
 // Definir una ruta de prueba
 //app.get('/', (req, res) => {
-  //  res.sendFile(new URL('./server.js', import.meta.url).pathname);
-    //res.sendFile(new URL('./client.js', import.meta.url).pathname);
     //res.sendFile(new URL('./index.html', import.meta.url).pathname);
 //});
-
 // Iniciar el servidor
 //app.listen(port, () => {
   //  console.log(`Servidor escuchando en http://localhost:${port}`);
@@ -87,8 +87,8 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
+server.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
 
 function generaPelota() {
