@@ -1,6 +1,6 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
-const socket = require ( "socket.io-client" ) ('https://pong2023.netlify.app/');
+const socket = io('http://localhost:3000', { transports: ["websocket"] });
 
 const paddleWidth = 10;
 const paddleHeight = 60;
@@ -69,7 +69,6 @@ function realizarPing() {
     const fin = Date.now(); // Registra el tiempo de finalización del ping
     ping = fin - tiempoInicio;
     document.getElementById('ping').innerHTML = `Tiempo del ping : ${ping}`;
-    debugger
     console.log(`Ping al servidor: ${ping} ms`)
     });
 }

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "type": "commonjs",
-  "main": "server.js",
+  "main": "public/server.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "node server.js"
+    "start": "node public/server.js",
+    "build": "node public/server.js"
   },
   "keywords": [],
   "author": "",
