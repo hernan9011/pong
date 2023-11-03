@@ -13,12 +13,6 @@ const port = 3000 || process.env.PORT;
 app.get('/', (req, res) => {
     res.send('¡Hola Mundo!');
 });
-
-// Obtener la ruta absoluta al archivo index.html
-const indexPath = path.join(__dirname, './index.html');
-// Enviar el archivo index.html
-app.get('/', (req, res) => { res.sendFile(indexPath); });
-
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
