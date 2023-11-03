@@ -1,7 +1,7 @@
 import express from 'express';
 import { createServer } from 'node:http';
 import { Server } from 'socket.io';
-import { path } from 'path';
+import { patd } from 'path';
 
 const app = express();
 const server = createServer(app);
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 // Obtener la ruta absoluta al archivo index.html
-const indexPath = path.join(__dirname, './index.html');
+const indexPath = patd.join(__dirname, './index.html');
 // Enviar el archivo index.html
 app.get('/', (req, res) => { res.sendFile(indexPath); });
 
