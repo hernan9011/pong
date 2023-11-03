@@ -2,7 +2,7 @@
   "name": "pong",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "build": "node server.js"
