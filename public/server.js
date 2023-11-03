@@ -6,6 +6,9 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
+
+// Definir un puerto para nuestro servidor
+const port = 3000 || process.env.PORT;
 // Definir una ruta de prueba
 app.get('/', (req, res) => {
     res.send('¡Hola Mundo!');
@@ -15,8 +18,6 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
 });
-
-
 
 
 const PlayerServer = {};
