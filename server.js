@@ -9,10 +9,9 @@ const io = socketIo(server);
 const PORT = process.env.PORT || 3000;
 
 // Definir una ruta de prueba
-app.get('/', (req, res) => {
-    res.sendFile(new URL('./index.html', import.meta.url).pathname);
-});
-
+app.get("/", (req, res) => {
+    res.sendFile("index.html");
+  });
 // Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
