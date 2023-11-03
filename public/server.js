@@ -13,12 +13,10 @@ const port = 3000 || process.env.PORT;
 app.get('/', (req, res) => {
     res.send('¡Hola Mundo!');
 });
-
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
 });
-
 
 const PlayerServer = {};
 const ballServer = {
@@ -89,9 +87,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log(`Servidor en ejecución`);
-});
 
 function generaPelota() {
     // Actualiza la posición de la pelota
