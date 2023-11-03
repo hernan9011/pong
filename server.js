@@ -11,10 +11,10 @@ const io = new Server(server);
 const port = 3000 || process.env.PORT;
 // Definir una ruta de prueba
 app.get('/', (req, res) => {
-    res.sendFile(new URL('./index.html', import.meta.url).pathname);
     res.sendFile(new URL('./server.js', import.meta.url).pathname);
     res.sendFile(new URL('./client.js', import.meta.url).pathname);
-  });
+    res.sendFile(new URL('./index.html', import.meta.url).pathname);
+});
 
 // Iniciar el servidor
 app.listen(port, () => {
