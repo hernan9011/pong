@@ -91,9 +91,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
-});
 
 function generaPelota() {
     // Actualiza la posición de la pelota
