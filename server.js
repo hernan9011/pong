@@ -1,12 +1,11 @@
-import express from 'express';
-import { createServer } from 'node:http';
-import { Server } from 'socket.io';
+const express = require('express');
+const { createServer } = require('node:http');
+const { Server } = require('socket.io');
 
 const app = express();
-const port = 3000 || process.env.PORT;
 const server = createServer(app);
 const io = new Server(server);
-
+const port = 3000 || process.env.PORT;
 // Definir una ruta de prueba
 //app.get('/', (req, res) => {
   //  res.sendFile(new URL('./server.js', import.meta.url).pathname);
