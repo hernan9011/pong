@@ -3,23 +3,21 @@ import { createServer } from 'node:http';
 import { Server } from 'socket.io';
 
 const app = express();
+const port = 3000 || process.env.PORT;
 const server = createServer(app);
 const io = new Server(server);
 
-
-// Definir un puerto para nuestro servidor
-const port = 3000 || process.env.PORT;
 // Definir una ruta de prueba
-app.get('/', (req, res) => {
-    res.sendFile(new URL('./server.js', import.meta.url).pathname);
-    res.sendFile(new URL('./client.js', import.meta.url).pathname);
-    res.sendFile(new URL('./index.html', import.meta.url).pathname);
-});
+//app.get('/', (req, res) => {
+  //  res.sendFile(new URL('./server.js', import.meta.url).pathname);
+    //res.sendFile(new URL('./client.js', import.meta.url).pathname);
+    //res.sendFile(new URL('./index.html', import.meta.url).pathname);
+//});
 
 // Iniciar el servidor
-app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
-});
+//app.listen(port, () => {
+  //  console.log(`Servidor escuchando en http://localhost:${port}`);
+//});
 
 const PlayerServer = {};
 const ballServer = {
@@ -90,6 +88,9 @@ io.on('connection', (socket) => {
     });
 });
 
+server.listen(port, () => {
+    console.log(`Servidor escuchando en http://localhost:${port}`);
+});
 
 function generaPelota() {
     // Actualiza la posición de la pelota
