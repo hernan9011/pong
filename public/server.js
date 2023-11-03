@@ -1,7 +1,6 @@
 import express from 'express';
 import { createServer } from 'node:http';
 import { Server } from 'socket.io';
-import { patd } from 'path';
 
 const app = express();
 const server = createServer(app);
@@ -14,12 +13,6 @@ const port = 3000 || process.env.PORT;
 app.get('/', (req, res) => {
     res.send('¡Hola Mundo!');
 });
-
-// Obtener la ruta absoluta al archivo index.html
-const indexPath = patd.join(__dirname, './index.html');
-// Enviar el archivo index.html
-app.get('/', (req, res) => { res.sendFile(indexPath); });
-
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
