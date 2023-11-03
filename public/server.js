@@ -163,5 +163,3 @@ function reset() {
     myScoreServer = 0;
     opponentScoreServer = 0;
 }
-
-location.href = "public\index.html";
