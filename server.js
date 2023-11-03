@@ -8,10 +8,14 @@ const io = socketIo(server);
 
 const PORT = process.env.PORT || 3000;
 
-// Definir una ruta de prueba
-app.get("/", (req, res) => {
-    res.sendFile("index.html");
-  });
+// CommonJS
+const path = require('path');
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './index.html'));
+});
+
+
 // Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
