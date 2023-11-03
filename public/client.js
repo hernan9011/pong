@@ -1,6 +1,7 @@
+import { io } from "socket.io-client";
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
-const socket = io('http://localhost:3000', { transports: ["websocket"] });
+const socket = io('https://pong2023.netlify.app/socket.io/');
 
 const paddleWidth = 10;
 const paddleHeight = 60;
