@@ -2,11 +2,10 @@
   "name": "pong",
   "version": "1.0.0",
   "description": "",
-  "type": "commonjs",
-  "main": "public/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node public/server.js",
-    "build": "node public/server.js"
+    "start": "node server.js",
+    "build": "node server.js"
   },
   "keywords": [],
   "author": "",

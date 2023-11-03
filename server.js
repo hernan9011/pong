@@ -1,10 +1,11 @@
 const express = require('express');
-const { createServer } = require('node:http');
-const { Server } = require('socket.io');
+const http = require('http');
+const socketIo = require('socket.io');
 
 const app = express();
-const server = createServer(app);
-const io = new Server(server);
+const server = http.createServer(app);
+const io = socketIo(server);
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
