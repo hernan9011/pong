@@ -15,11 +15,11 @@ const PORT = process.env.PORT || 3000;
 // Definir una ruta de prueba
 app.get('/', (req, res) => {
     res.send('¡Hola Mundo!');
-});
+});fix
   
 // Iniciar el servidor
 app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
 
 const PlayerServer = {};
