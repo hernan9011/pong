@@ -60,15 +60,7 @@ body {
 }
 
 #canvas {
-    display: flex;
-    height: 80%;
-    width: 90%;
-}
+    width: 50%;
+    text-align:center;
+    }
 
-#estadisticas {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    width: 90%;
-}
