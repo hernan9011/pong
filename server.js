@@ -5,21 +5,17 @@ const socketIo = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-
 const PORT = process.env.PORT || 3000;
 
 // CommonJS
-const path = require('path');
-
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './index.html'));
-});
-
-
+//const path = require('path');
+//app.get('/', (req, res) => {
+  //res.sendFile(path.resolve(__dirname, './index.html'));
+//});
 // Iniciar el servidor
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
-});
+//app.listen(PORT, () => {
+  //  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+//});
 
 const PlayerServer = {};
 const ballServer = {
