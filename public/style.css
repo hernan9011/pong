@@ -58,6 +58,7 @@ body {
     width: 30%;
     background: #fff;
 }
+
 html {
     display: flex;
     align-items: center;
@@ -85,7 +86,7 @@ p {
 
 body {
     font-family: 'Courier New', Courier, monospace;
-    
+
     display: flex;
     height: 100vh;
     width: 100%;
@@ -105,6 +106,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
     height: 100%;
     width: 100%;
     background-image: url(background.jpg);
@@ -133,4 +135,43 @@ body {
     justify-content: center;
     height: 100%;
     width: 90%;
+}
+
+
+.espera {
+    display: none;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border: 10px solid #007bff;
+    border-radius: 50%;
+    animation: girar 2s linear infinite;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.win{
+    display: none;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+}
+
+.button{
+ padding: 1em;
+ border-radius: 1.5em;
+ border: 1px solid #fff;
+ font-weight: bolder;
 }

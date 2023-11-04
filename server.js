@@ -5,19 +5,9 @@ const socketIo = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
-
-// Definir una ruta de prueba
-//app.get('/', (req, res) => {
-    //res.sendFile(new URL('./index.html', import.meta.url).pathname);
-//});
-// Iniciar el servidor
-//app.listen(port, () => {
-  //  console.log(`Servidor escuchando en http://localhost:${port}`);
-//});
 
 const PlayerServer = {};
 const ballServer = {
@@ -41,6 +31,8 @@ let current = true;
 let conexionesTotales = 0;
 let desconexionesTotales = 0;
 
+let start= 0;
+
 io.on('connection', (socket) => {
     console.log(`Usuario conectado: ${socket.id}`);
 
@@ -57,8 +49,12 @@ io.on('connection', (socket) => {
 
     socket.on('mensaje', (data) => {
         console.log('Mensaje del cliente:', data);
-        io.emit('evento', PlayerServer);
-        generaPelota();
+        start++;
+        if(start >= 2){
+            io.emit('evento', PlayerServer);
+            generaPelota();
+            start = 0;
+        }
     });
 
     // Manejar el evento 'ping' del cliente
@@ -74,6 +70,12 @@ io.on('connection', (socket) => {
     socket.on('moverOponente', (data) => {
         opponentPaddleYServer = data.y;
         io.emit('actualizarOponente', data);
+    });
+
+
+    socket.on('restart', (data) => {
+        reset();
+        io.emit('reinicio', data);
     });
 
     socket.on('disconnect', () => {

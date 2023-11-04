@@ -21,18 +21,33 @@ let isGameStarted = false;
 let flag = false;
 let ping = 0; 
 
-socket.on('connect', () => {
-    // Botón para iniciar el juego
-    document.getElementById('startButton').addEventListener('click', function () {
+socket.on('connect', () => { 
+    setTimeout(() => { realizarPing(); }, "1000");
+});
+
+// Botón para iniciar el juego
+document.getElementById('startButton').addEventListener('click', function () {
+    if (!isGameStarted) {
+        const div = document.getElementById("myDiv");
+        div.style.display = "flex";
         socket.emit('mensaje', 'Hola, servidor!');
-    }); 
-    
-    setTimeout(() => {
-        realizarPing();
-    }, "1000");
+    }
+    else {
+        socket.emit('restart', 'init');
+    }
+}); 
+
+socket.on('reinicio', (data) => {
+        var div = document.getElementById("myDivWin");
+        div.style.display = "none";
+        resetClient();
+        flag = false;
+        draw();
 });
 
 socket.on('evento', (data) => {
+    const div = document.getElementById("myDiv");
+    div.style.display = "none";
     console.log('dos en sala', data);
     players = data;
     isGameStarted = true;
@@ -55,11 +70,33 @@ socket.on('actualizarOponente', (data) => {
 });
 
 socket.on('actMyScore', (data) => {
-    myScore = data;
+    opponentScore = data;
+    if(opponentScore == 10){
+        resetClient();
+        const div = document.getElementById("myDivWin");
+        if (players[socket.id].flag) {
+            div.style.display = "flex";
+            div.innerHTML = `<p>you loser <p>`;
+        } else{
+            div.style.display = "flex";
+            div.innerHTML = `<p>you win <p>`;
+        }
+    }
 });
 
 socket.on('actOpponentScore', (data) => { 
-    opponentScore = data;
+    myScore = data;
+    if( myScore== 10){
+        resetClient();
+        const div = document.getElementById("myDivWin");
+        if (players[socket.id].flag) {
+            div.style.display = "flex";
+            div.innerHTML = `<p>you win <p>`;
+        } else{
+            div.style.display = "flex";
+            div.innerHTML = `<p>you loser<p>`;
+        }
+    }
 });
 
 function realizarPing() {
@@ -97,8 +134,6 @@ socket.on('estadisticas', (estadisticas) => {
     `
   });
   
-
-
 socket.on('recargar', (players) => {
     console.log(players);
     ball.x = 300;
@@ -156,7 +191,7 @@ function draw() {
         if(flag){
             // Dibuja el tablero
             context.clearRect(0, 0, canvas.width, canvas.height);
-            context.fillStyle = '#fff';
+            context.fillStyle = 'rgba(255, 255, 255, 0)';
             context.fillRect(0, 0, canvas.width, canvas.height);
         }else{
             // Solicita el siguiente cuadro de animación
@@ -165,3 +200,14 @@ function draw() {
     }
 }
 
+function resetClient(){
+    ball.x = 300;
+    ball.y = 200;
+    ball.speedX = 5;
+    ball.speedY = 5;
+    myPaddleY = 175;
+    opponentPaddleY = 175;
+    myScore = 0;
+    opponentScore = 0;
+    flag = true;
+}
