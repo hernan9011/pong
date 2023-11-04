@@ -78,11 +78,19 @@ socket.on('estadisticas', (estadisticas) => {
     realizarPing();
     const estadisticasElement = document.getElementById('estadisticas');
     estadisticasElement.innerHTML = `
-      <h2>Estadísticas de Conexión</h2>
-      <p>Socket ID: ${socket.id}</p>
-      <p id="ping">Tiempo del ping : ${ping}</p>
-      <p>Conexiones Totales: ${estadisticas.conexionesTotales}</p>
-      <p>Desconexiones Totales: ${estadisticas.desconexionesTotales}</p>
+    <table class="table table-dark">
+    <tr>
+      <th class="table-dark">ID de socket</th>
+      <th class="table-dark">Ping</th>
+      <th class="table-dark">Conexiones totales</th>
+      <th class="table-dark">Desconexiones totales</th>
+    </tr>
+    <tr>
+      <td class="table-dark">${socket.id}</td>
+      <td class="table-dark">${ping}</td>
+      <td class="table-dark">${estadisticas.conexionesTotales}</td>
+      <td class="table-dark">${estadisticas.desconexionesTotales}</td>
+    </tr>
     `;
   });
   
