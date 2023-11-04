@@ -105,7 +105,8 @@ function realizarPing() {
     socket.on('pong', (tiempoInicio) => {
     const fin = Date.now(); // Registra el tiempo de finalización del ping
     ping = fin - tiempoInicio;
-    document.getElementById('ping').innerHTML = `Tiempo del ping : ${ping}`;
+    var pin = document.getElementById('ping');
+    pin.innerHTML = `${ping}`;
     console.log(`Ping al servidor: ${ping} ms`)
     });
 }
@@ -121,7 +122,7 @@ socket.on('estadisticas', (estadisticas) => {
      </div>
      <div class=item>
         <h3>Ping </h3>
-        <p>${ping}</p>
+        <p id="ping">${ping}</p>
      </div>
      <div class=item>
         <h3>Conexiones totales</h3>
@@ -135,16 +136,8 @@ socket.on('estadisticas', (estadisticas) => {
   });
   
 socket.on('recargar', (players) => {
-    console.log(players);
-    ball.x = 300;
-    ball.y = 200;
-    ball.speedX = 5;
-    ball.speedY = 5;
-    myPaddleY = 175;
-    opponentPaddleY = 175;
-    myScore = 0;
-    opponentScore = 0;
-    flag = true;
+    resetClient();
+    socket.emit('resetServer', 'init');
 });
 
 canvas.addEventListener('mousemove', (event) => {

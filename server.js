@@ -77,6 +77,10 @@ io.on('connection', (socket) => {
         reset();
         io.emit('reinicio', data);
     });
+    
+    socket.on('resetServer', (data) => {
+        reset();
+    });
 
     socket.on('disconnect', () => {
         console.log(`Usuario desconectado: ${socket.id}`);
