@@ -1,4 +1,4 @@
-const { io } = require("socket.io-client");
+import { io } from "socket.io-client";
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 const socket = io('https://pong2023.netlify.app/', { transports: ["websocket"] });
