@@ -1,4 +1,4 @@
-const io = require('socket.io-client');
+const { io } = require("socket.io-client");
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 const socket = io('http://localhost:3000', { transports: ["websocket"] });
