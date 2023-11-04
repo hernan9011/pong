@@ -1,5 +1,74 @@
-#canvas {
-    width: 50%;
-    text-align:center;
-    }
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 
+h3 {
+    margin: 0;
+    padding: 0.5em;
+    border-radius: 0.8em;
+    background-color: aliceblue;
+    border: solid 1px #ccc;
+}
+
+p {
+    padding: 0.5em;
+    border-radius: 0.8em;
+    background-color: aliceblue;
+    border: solid 1px #ccc;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url(background.jpg);
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+}
+
+.section-one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.section-two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 30%;
+    background: #fff;
+}
+
+#canvas {
+    display: flex;
+    height: 80%;
+    width: 90%;
+}
+
+#estadisticas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 90%;
+}
