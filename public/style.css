@@ -3,3 +3,6 @@
     text-align:center;
     }
 
+body {
+    background-image: url("background.jpg");
+  }
